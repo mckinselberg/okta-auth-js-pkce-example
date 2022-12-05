@@ -8,7 +8,7 @@ You need a [Heroku](https://signup.heroku.com/) account to follow these instruct
 
 You can create a free Okta Developer org and deploy this app directly to Heroku by clicking the purple button:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+<!-- [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) -->
 
 After you deploy the app, click on **View** on the result screen to navigate to the newly deployed app.
 
@@ -32,7 +32,7 @@ oktaAuth.token.parseFromUrl()
 ...
 ```
 
-The `parseFromUrl()` function detects when an *authorization code* has been returned as the result of the Authorization Code with PKCE flow. In this case, it automatically exchanges the *authorization code* for a set of tokens by posting to the `/token` endpoint.
+The `parseFromUrl()` function detects when an _authorization code_ has been returned as the result of the Authorization Code with PKCE flow. In this case, it automatically exchanges the _authorization code_ for a set of tokens by posting to the `/token` endpoint.
 
 ### The Implicit Flow and Why We Hate It
 
@@ -44,7 +44,7 @@ Click **Profile (implicit)**. In your browser's developer tools, you'll see an e
 The response type is not supported by the authorization server.
 ```
 
-This is because, the SPA app that's automatically set up in your Okta org is configured to *not* allow the inmplicit flow. This is the best current practice. But, for demonstration purposes, we want to allow this flow.
+This is because, the SPA app that's automatically set up in your Okta org is configured to _not_ allow the inmplicit flow. This is the best current practice. But, for demonstration purposes, we want to allow this flow.
 
 Jump back to the tab in your browser that has the Heroku dashboard. Click `okta` to Single Sign-On (SSO) to your Okta organization. Click **Applications**. Click **Heroku Created OIDC App - browser**. Click **General**.
 
@@ -58,8 +58,7 @@ http://localhost:8080/authorization-code/callback#id_token=eyJraWQiOiJiRE9pQkFmb
 
 Unlike the PKCE flow from earlier, this response has the tokens right on the url of the redirect. This is problematic since anything that passes thtough your browser's address bar could be intercepted or altered (if you had malware, a virus or a malicious browser extension, for instance).
 
-This is why the Authorization Code Flow with PKCE Flow is a superior alternative to the Implicit Flow. The temporary authorization code is exchanged for tokens using a `POST` request, which does *not* pass through your browser's address bar.
-
+This is why the Authorization Code Flow with PKCE Flow is a superior alternative to the Implicit Flow. The temporary authorization code is exchanged for tokens using a `POST` request, which does _not_ pass through your browser's address bar.
 
 ## Quick Start: Manual Setup
 
@@ -67,10 +66,10 @@ You need a free [Okta Developer Org](https://developer.okta.com/signup) to get s
 
 In the admin console of your Okta org, Navigate to: **Applications**
 
-- Click the green **Add Application** button 
+- Click the green **Add Application** button
 - Select **Single-Page App** application, and click **Next**
 - Give the app a **Name**.
-- Change the value for **Login redirect URIs**  to `http://localhost:8080/authorization-code/callback`
+- Change the value for **Login redirect URIs** to `http://localhost:8080/authorization-code/callback`
 - Check **Authorization Code** (and leave **Implicit** checked)
 - Add `http://localhost:8080` to **Logout redirect URIs**
 - Click **Done**
@@ -78,11 +77,13 @@ In the admin console of your Okta org, Navigate to: **Applications**
 Take note of the **Client ID** at the bottom of the page.
 
 ### Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 OKTA_CLIENT_ORGURL=<your Okta org> OKTA_OAUTH2_CLIENT_ID_SPA=<client id> npm run serve
 ```
